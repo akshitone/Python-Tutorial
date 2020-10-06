@@ -15,6 +15,7 @@ data = dict(zip(key, value))
 # print(set(data))
 print(data)
 print(data['firstname'])
+print(data.keys())
 
 # VARIABLE
 a = 10

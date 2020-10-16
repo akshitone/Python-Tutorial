@@ -27,11 +27,6 @@ class Gamer:
     def generate_damage(self):
         return randrange(self.attack_low, self.attack_high)
 
-    def generate_spell_magic(self, i):
-        magic_low = self.magic[i]["damage"] - 5
-        magic_high = self.magic[i]["damage"] + 5
-        return randrange(magic_low, magic_high)
-
     def take_damage(self, damage):
         self.health_point -= damage
         if self.health_point < 0:
@@ -40,6 +35,7 @@ class Gamer:
 
     def heal(self, damage):
         self.health_point += damage
+        print(self.health_point)
         if self.health_point > self.max_health_point:
             self.health_point = self.max_health_point
         return self.health_point
@@ -59,16 +55,10 @@ class Gamer:
     def reduce_magic_point(self, cost):
         self.magic_point -= cost
 
-    def get_spell_name(self, i):
-        return self.magic[i]["name"]
-
-    def get_spell_magic_cost(self, i):
-        return self.magic[i]["cost"]
-
     def choose_action(self):
         i = 1
         print(BackgroundColors.OKBLUE + BackgroundColors.BOLD +
-              "ACTIONS".center(30, " ") + BackgroundColors.ENDC)
+              "ACTIONS".center(50, " ") + BackgroundColors.ENDC)
         for action in self.actions:
             print(str(i) + ":" + action)
             i += 1
@@ -76,8 +66,8 @@ class Gamer:
     def choose_magic(self):
         i = 1
         print(BackgroundColors.OKBLUE + BackgroundColors.BOLD +
-              "MAGICS".center(30, " ") + BackgroundColors.ENDC)
+              "MAGICS".center(50, " ") + BackgroundColors.ENDC)
         for spell in self.magic:
-            print(str(i) + ": " + spell["name"] +
-                  "(cost: " + str(spell["cost"]) + ")")
+            print(str(i) + ": " + spell.name +
+                  "(cost: " + str(spell.cost) + ")")
             i += 1

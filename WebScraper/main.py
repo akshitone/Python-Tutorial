@@ -7,10 +7,11 @@ req = requests.get(f"https://www.google.com/search?q={search}")
 soup = BeautifulSoup(req.text, "html.parser")
 
 
-links = soup.find_all("div", class_='BNeawe UPmit AP7Wnd')
+links = soup.find_all("span", class_='BNeawe')
 print(links)
+print(len(links))
 for link in links:
-    print(link.text)
+    print(link.a['href'])
 
 # COPING HTML PAGE IN FILE
 # file = open("soup.html", "w+", encoding="utf-8")
